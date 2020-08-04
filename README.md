@@ -10,8 +10,9 @@ This way we have the blurried background on top that gets masked and the non-blu
 <strong>NOTE:</strong> applying the background to the container's ::before pseudo element will allow you to modify the background  without touching the svg mask (usefull if you need to flip the background to create more contrast but you can't modify the original image).<br><br>
 <strong>Second solution:</strong><br>
 <ul>
-<li>Create a container</li><br>
-<li>Apply a background to the container's parent element</li><br>
-<li>Apply the backdrop-filter:blur to the container's child</li><br>
-<li>Apply the svg-mask to the container's child</li><br><br>
+<li>Create a container</li>
+<li>Apply a background to the container's parent element</li>
+<li>Apply the backdrop-filter:blur to the container's child</li>
+<li>Apply the svg-mask to the container's child</li>
+</ul>
 This way we have the effect we would have if the backdrop-filter: blur could be applied to text.<br><br>
