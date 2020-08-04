@@ -1,4 +1,4 @@
-<h1>Is there a way to apply the CSS3 backdrop-filter:blur() attribute to a text element? YES !</h1><br>
+<h1>Is there a way to apply backdrop-filter:blur() to a text element? YES !</h1><br>
 As far as i know there's <strong>no way to directly apply the backdrop-filter:blur to a text</strong> element. But we can work on it.<br> 
 I have two possible solutions: <br>
 <strong>First solution:</strong><br>
