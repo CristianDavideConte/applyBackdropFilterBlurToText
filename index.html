@@ -1,0 +1,70 @@
+<html>
+	<head>
+		<style>
+			html,body {
+				margin: 0;
+				/* UNCOMMENT THIS PART TO TRY OUT THE NON-REVERSED VERSION
+				background: url(https://wallpaperhd.wiki/wp-content/uploads/wallpapers-1920x1080-5ae1cd66635d3.jpg) 0 0;
+				background-repeat: no-repeat;
+				background-attachment: fixed;
+				*/
+			}
+
+			/* DELETE THE ::before TO TRY OUT THE NON-REVERSED VERSION */
+			.container::before {
+			  content: "";
+			  position: absolute;
+			  width: 100vw;
+			  height: 200vh;
+			  background: url(https://wallpaperhd.wiki/wp-content/uploads/wallpapers-1920x1080-5ae1cd66635d3.jpg) 0 0;
+				background-repeat: no-repeat;
+				background-attachment: fixed;
+			  transform: rotateY(180deg);
+			}
+
+			.container {
+					width: 100vw;
+					height: 200vh;
+					display: flex;
+					align-items: center;
+			}
+
+			.svg {
+				position: absolute;
+				z-index: 1;
+				width: 100%;
+				height: 100%;
+
+				/* DELETE THIS 4 LINES TO TRY OUT THE NON-REVERSED VERSION */
+				filter: blur(20px) saturate(180%);
+				background: url(https://wallpaperhd.wiki/wp-content/uploads/wallpapers-1920x1080-5ae1cd66635d3.jpg);
+				background-repeat: no-repeat;
+				background-attachment: fixed;
+
+				/* UNCOMMENT THIS PART TO TRY OUT THE NON-REVERSED VERSION
+				backdrop-filter: blur(20px) saturate(180%);
+				*/
+
+				/* Chrome, Safari and all webkit browsers */
+  			-webkit-mask-image: url(./SVG.svg);
+				-webkit-mask-size: contain;
+				-webkit-mask-position: center;
+				-webkit-mask-repeat: no-repeat;
+				-webkit-mask-border: url(./SVG.svg) 25;
+
+				/* FIREFOX */
+				mask-image: url(./SVG.svg);
+				mask-size: contain;
+				mask-position: center;
+				mask-repeat: no-repeat;
+				mask-border: url(./SVG.svg) 25;
+			}
+		</style>
+	</head>
+
+	<body>
+		<section class = "container">
+			<div class = "svg"></div>
+		</section>
+	</body>
+</html>
