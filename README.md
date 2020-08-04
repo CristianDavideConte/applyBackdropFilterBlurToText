@@ -1,4 +1,4 @@
-As far as i know there's **no way to directly apply the backdrop-filter:blur to a text** element.<br></br>What we can do is: <br></br><br></br>
+As far as i know there's **no way to directly apply the backdrop-filter:blur to a text** element.<br></br>What we can do is: <br>
 <strong>First solution:</strong><br>
 <ul>
 <li>Create a container with a child</li>
