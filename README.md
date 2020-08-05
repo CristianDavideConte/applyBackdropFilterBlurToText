@@ -2,7 +2,7 @@
 <h1>YES!</h1><br>
 As far as i know there's <strong>no way to directly apply the backdrop-filter:blur to a text</strong> element. But we can work on it.<br> 
 I have two possible solutions: <br>
-<strong><h2>First solution:</h2></strong><br>
+<strong><h2>First solution:</h2></strong>
 <ul>
   <li>Create a container</li>
   <li>Apply a background to it (or to its ::before pseudo-element)</li>
@@ -11,7 +11,7 @@ I have two possible solutions: <br>
 </ul>
 This way we have the blurried background on top that gets masked and the non-blurry version under it.<br><br>
 <strong>NOTE:</strong> applying the background to the container's ::before pseudo element will allow you to modify the background  without touching the svg mask (usefull if you need to flip the background to create more contrast but you can't modify the original image).<br><br>
-<strong><h2>Second solution:</h2></strong><br>
+<strong><h2>Second solution:</h2></strong>
 <ul>
   <li>Create a container</li>
   <li>Apply a background to the container</li>
