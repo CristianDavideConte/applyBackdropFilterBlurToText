@@ -30,4 +30,4 @@ If you are curious use the call the testSmoothness() method (i suggest to use se
   <li>Apply the blurry version of the background to the svg element</li>
   <li>Apply the svg-mask to the svg element</li>
 </ul>
-<strong>Here you have a live demo: </strong><a href = "https://cristiandavideconte.github.io/applyBackdropFilterBlurToText"/>DEMO</a>
+<strong><h2>Here you have a live demo: </strong><a href = "https://cristiandavideconte.github.io/applyBackdropFilterBlurToText"/>DEMO</a></h2>
