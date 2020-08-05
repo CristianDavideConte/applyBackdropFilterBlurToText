@@ -18,7 +18,8 @@ This way we have the blurried background on top that gets masked and the non-blu
   <li>Apply the backdrop-filter:blur to the svg element</li>
   <li>Apply the svg-mask to the svg element</li>
 </ul>
-This way we have the effect we would have if the backdrop-filter: blur could be applied to text.<br><br>
+This way we have the effect we would have if the backdrop-filter: blur could be applied to text.<br>
+This one seems to be the one which performs the best, if you are curious use the testSmoothness() method with the browser profiler and see the results ;)<br><br>
 
 <strong>Third solution:</strong><br>
 <strong>(requires to have 2 copies of the background, one of which already blurred)</strong>
@@ -28,5 +29,4 @@ This way we have the effect we would have if the backdrop-filter: blur could be 
   <li>Apply the blurry version of the background to the svg element</li>
   <li>Apply the svg-mask to the svg element</li>
 </ul>
-This is the fastest method of all because no blur is done in real-time but is the one with more limitations !<br>
 <strong>Here you have a live demo: </strong><a href = "https://cristiandavideconte.github.io/applyBackdropFilterBlurToText"/>DEMO</a>
