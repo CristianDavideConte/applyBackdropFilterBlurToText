@@ -13,7 +13,7 @@
 			}
 
 			/* DELETE THE ::before TO TRY OUT THE NON-REVERSED VERSION */
-			.container::before {
+			.backgroundLayer::before {
 			  content: "";
 			  position: absolute;
 			  width: 100vw;
@@ -25,18 +25,18 @@
 			  transform: rotateY(180deg);
 			}
 
-			.container {
+			.backgroundLayer {
 					width: 100vw;
 					height: 200vh;
 					display: flex;
 					align-items: center;
+					position: absolute;
 			}
 
 			.svg {
-				position: absolute;
 				z-index: 1;
 				width: 100%;
-				height: 100%;
+				height: 200%;
 
 				/* DELETE THIS 4 LINES TO TRY OUT THE NON-REVERSED VERSION */
 				filter: blur(20px) saturate(180%);
@@ -74,8 +74,7 @@
 	</head>
 
 	<body>
-		<section class = "container">
-			<div class = "svg"></div>
-		</section>
+		<section class = "backgroundLayer"></section>
+		<div class = "svg"></div>
 	</body>
 </html>
