@@ -5,6 +5,7 @@
 		<style>
 			html,body {
 				margin: 0;
+    		scroll-behavior: smooth;
 			}
 
 			#buttonSection {
@@ -37,7 +38,6 @@
 					width: 100vw;
 					height: 200vh;
 					display: flex;
-					align-items: center;
 					position: fixed;
 			}
 
@@ -137,5 +137,20 @@
 		document.getElementById("method1").addEventListener("click", () => _changeMethod("method1"),{passive:true});
 		document.getElementById("method2").addEventListener("click", () => _changeMethod("method2"),{passive:true});
 		document.getElementById("method3").addEventListener("click", () => _changeMethod("method3"),{passive:true});
+	</script>
+
+	<script>
+		/*
+		 * Performs a scrolling test
+		 */
+		let _testTimes = 0;
+		function testSmoothness() {
+			if(_testTimes < 50) {
+				let _scrollAmmount = (_testTimes % 2 == 0) ? window.scrollY + window.innerHeight : window.scrollY - window.innerHeight;
+				window.scroll(0, _scrollAmmount);
+				_testTimes++;
+				setTimeout(testSmoothness, 800);
+			}
+		}
 	</script>
 </html>
