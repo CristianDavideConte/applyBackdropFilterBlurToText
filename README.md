@@ -29,4 +29,4 @@ This way we have the effect we would have if the backdrop-filter: blur could be 
   <li>Apply the svg-mask to the svg element</li>
 </ul>
 This is the fastest method of all because no blur is done in real-time but is the one with more limitations !<br>
-<strong>Here you have a live demo: </strong><a>https://cristiandavideconte.github.io/applyBackdropFilterBlurToText/</a>
+<strong>Here you have a live demo: </strong><a href = "https://cristiandavideconte.github.io/applyBackdropFilterBlurToText"/>DEMO</a>
