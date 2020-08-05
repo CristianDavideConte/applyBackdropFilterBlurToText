@@ -22,8 +22,7 @@ This way we have the effect we would have if the backdrop-filter: blur could be 
 <strong>This one is the one which performs the best</strong> because it's the only method that doesn't require the svg element to duplicate the background (which would have to be repainted at every frame because of the background-attachment:fixed attribute).<br><br>
 If you are curious use the call the testSmoothness() method (i suggest to use setTimeout(testSmoothness, 5000)) in the browser console with the browser profiler and see the results ;)<br><br>
 
-<strong><h2>Third solution:</h2></strong><br>
-<strong>(requires to have 2 copies of the background, one of which already blurred)</strong>
+<strong><h2>Third solution:</h2></strong><strong>(requires to have 2 copies of the background, one of which already blurred)</strong>
 <ul>
   <li>Create a container</li>
   <li>Apply a background to the container</li>
