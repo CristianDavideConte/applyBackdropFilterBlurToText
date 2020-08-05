@@ -15,14 +15,13 @@
 			/* DELETE THE ::before TO TRY OUT THE NON-REVERSED VERSION */
 			.backgroundLayer::before {
 			  content: "";
-			  position: absolute;
 			  width: 100vw;
 			  height: 200vh;
 			  background: url(https://wallpaperhd.wiki/wp-content/uploads/wallpapers-1920x1080-5ae1cd66635d3.jpg) 0 0;
 				background-repeat: no-repeat;
 				background-attachment: fixed;
 				background-position: center;
-			  transform: rotateY(180deg);
+			  //transform: rotateY(180deg);
 			}
 
 			.backgroundLayer {
@@ -30,7 +29,7 @@
 					height: 200vh;
 					display: flex;
 					align-items: center;
-					position: absolute;
+					position: fixed;
 			}
 
 			.svg {
