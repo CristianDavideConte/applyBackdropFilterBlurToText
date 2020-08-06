@@ -36,72 +36,98 @@
 
 			.backgroundLayer {
 					width: 100vw;
-					height: 200vh;
+					height: 100vh;
 					display: flex;
 					position: fixed;
 			}
 
-			#svg {
-				z-index: 1;
+			#svgWrapper {
 				width: 100%;
 				height: 200%;
+			}
+
+			#svg {
+				width: 100%;
+				height: 100%;
 
 				/* Chrome, Safari and all webkit browsers */
   			-webkit-mask-image: url(./SVG.svg);
 				-webkit-mask-size: contain;
 				-webkit-mask-position: center;
 				-webkit-mask-repeat: no-repeat;
-				-webkit-mask-border: url(./SVG.svg) 25;
 
 				/* FIREFOX */
 				mask-image: url(./SVG.svg);
 				mask-size: contain;
 				mask-position: center;
 				mask-repeat: no-repeat;
-				mask-border: url(./SVG.svg) 25;
 			}
 
+			#svg.reset {
+				-webkit-mask-image: none;
+				mask-image: none;
+			}
+
+			.method1 .backgroundLayer {
+			  background: url(./images/backgroundOriginal.jpg) 0 0;
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+/*
+			#svgWrapper.method1 {
+		    filter: drop-shadow(0px 0px 4px rgba(0,0,0,1));
+		    -webkit-filter: drop-shadow(0px 0px 4px rgba(0,0,0,1));
+		    -moz-filter: drop-shadow(0px 0px 4px rgba(0,0,0,1));
+		    -ms-filter: drop-shadow(0px 0px 4px rgba(0,0,0,1));
+		    -o-filter: drop-shadow(0px 0px 4px rgba(0,0,0,1));
+			}
+*/
 			#svg.method1 {
 				filter: blur(20px) saturate(180%);
-				background: url(https://wallpaperhd.wiki/wp-content/uploads/wallpapers-1920x1080-5ae1cd66635d3.jpg);
-				background-repeat: no-repeat;
-				background-attachment: fixed;
-				background-position: center;
-			}
+				-webkit-filter: blur(20px) saturate(180%);
+		    -moz-filter: blur(20px) saturate(180%);
+		    -ms-filter: blur(20px) saturate(180%);
+		    -o-filter: blur(20px) saturate(180%);
 
-			.method1 .backgroundLayer::before {
-			  content: "";
-			  width: 100vw;
-			  height: 200vh;
-			  background: url(https://wallpaperhd.wiki/wp-content/uploads/wallpapers-1920x1080-5ae1cd66635d3.jpg) 0 0;
+				background: url(./images/backgroundOriginal.jpg);
 				background-repeat: no-repeat;
 				background-attachment: fixed;
 				background-position: center;
-			  //transform: rotateY(180deg);
 			}
 
 			.method2 .backgroundLayer{
-				background: url(https://wallpaperhd.wiki/wp-content/uploads/wallpapers-1920x1080-5ae1cd66635d3.jpg) 0 0;
+				background: url(./images/backgroundOriginal.jpg) 0 0;
 				background-repeat: no-repeat;
-				background-attachment: fixed;
 				background-position: center;
 			}
+
+			/*#svgWrapper.method2 {
+				background: url(./SVG.svg) 0 0;
+				background-repeat: no-repeat;
+				background-position: center;
+			}*/
 
 			#svg.method2 {
 				-webkit-backdrop-filter: blur(20px) saturate(180%);
 				backdrop-filter: blur(20px) saturate(180%);
 			}
 
-			.method3 .backgroundLayer{
-				background: url(https://wallpaperhd.wiki/wp-content/uploads/wallpapers-1920x1080-5ae1cd66635d3.jpg) 0 0;
+			.method3 .backgroundLayer {
+				background: url(./images/backgroundOriginal.jpg) 0 0;
 				background-repeat: no-repeat;
-				background-attachment: fixed;
 				background-position: center;
 			}
-
+/*
+			#svgWrapper.method3 {
+		    filter: drop-shadow(0px 0px 4px rgba(0,0,0,1));
+		    -webkit-filter: drop-shadow(0px 0px 4px rgba(0,0,0,1));
+		    -moz-filter: drop-shadow(0px 0px 4px rgba(0,0,0,1));
+		    -ms-filter: drop-shadow(0px 0px 4px rgba(0,0,0,1));
+		    -o-filter: drop-shadow(0px 0px 4px rgba(0,0,0,1));
+			}
+*/
 			#svg.method3 {
-				//filter: saturate(180%);
-				background: url(./images/background.jpg);
+				background: url(./images/backgroundBlurred.jpg);
 				background-repeat: no-repeat;
 				background-attachment: fixed;
 				background-position: center;
@@ -116,18 +142,20 @@
 			<button id = "method2">Method 2: backdrop-filter:blur()</button>
 			<button id = "method3">Method 3: mask over already-blurred background</button>
 		</div>
-		<div id = "svg"></div>
+		<section id = "svgWrapper"><div id = "svg"></div></section>
 	</body>
 	<script>
 		function _changeMethod(className) {
+			let _svgElementWrapper = document.getElementById("svgWrapper");
 			let _svgElement = document.getElementById("svg");
 			window.requestAnimationFrame(() => {
+				_svgElementWrapper.className = className;
 				_svgElement.className = className;
 				document.body.className = className;
-				window.requestAnimationFrame(() => {
-					_svgElement.style.webkitMaskImage = "none";					/* Add the .style.maskImage version if you want to test with FF */
-					window.requestAnimationFrame(() => _svgElement.style.webkitMaskImage = "");	/* Add the .style.maskImage version if you want to test with FF */
-				});
+				/* The next 2 istructions allows the mask to properly adjust to the changes */
+				_svgElement.classList.add("reset");
+				window.requestAnimationFrame(() => _svgElement.classList.remove("reset"));
+
 				let buttons = document.getElementsByTagName("button");
 				for(const button of buttons)
 					button.style.background = (button.id == className) ? "rgba(0,200,30, 1)" : "rgba(200,30,30, 1)";
