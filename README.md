@@ -11,7 +11,7 @@ I have two possible solutions: <br>
 </ul>
 This way we have the blurried background on top that gets masked and the non-blurry version under it.<br><br>
 <strong>NOTE:</strong> applying the background to the container's ::before pseudo element will allow you to modify the background  without touching the svg mask (usefull if you need to flip the background to create more contrast but you can't modify the original image).<br><br>
-<strong><h2>Second solution:</h2></strong>
+<strong><h2>Second solution: The Fastest One</h2></strong>
 <ul>
   <li>Create a container</li>
   <li>Apply a background to the container</li>
