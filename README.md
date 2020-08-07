@@ -44,15 +44,15 @@ And this is how it's done:
 </ul>
  <br>
 This is code for reference if you need it:<br>
-  < svg >
-    < defs >
-      < filter id = "trans-shadow" >
-      < feGaussianBlur stdDeviation = "5"/ >
-      < feComposite operator = "out" in2 = "SourceGraphic" / >
-      < / filter >
-    </defs>
-    <image filter = "url(#trans-shadow)" x = "0" y = "0" width = "100%" height = "100%" xlink:href = "./SVG.svg" />
-  < / svg >
+  < svg ><br>
+    < defs ><br>
+      < filter id = "trans-shadow" ><br>
+      < feGaussianBlur stdDeviation = "5"/ ><br>
+      < feComposite operator = "out" in2 = "SourceGraphic" / ><br>
+      < / filter ><br>
+    < / defs ><br>
+    < image filter = "url(#trans-shadow)" x = "0" y = "0" width = "100%" height = "100%" xlink:href = "./SVG.svg" / ><br>
+  < / svg ><br>
 <br>
 </strong>If the text still isn't easy to read</strong> remember that with the Method 2 you can still set an rgba(255,255,255,0.xyz) background-color and that with the all the 3 methods you can add a saturate(xyz%) to the filter/backdrop-filter !<br>
 <h3>WE'RE DONE ! Now our backdropped text looks cool and is easy to read !</h3>
