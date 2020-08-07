@@ -54,6 +54,6 @@ This is code for reference if you need it:<br>
     < image filter = "url(#trans-shadow)" x = "0" y = "0" width = "100%" height = "100%" xlink:href = "./SVG.svg" / ><br>
   < / svg ><br>
 <br>
-</strong>If the text still isn't easy to read</strong> remember that with the Method 2 you can still set an rgba(255,255,255,0.xyz) background-color and that with the all the 3 methods you can add a saturate(xyz%) to the filter/backdrop-filter !<br>
+<strong>If the text still isn't easy to read</strong> remember that with the Method 2 you can still set an rgba(255,255,255,0.xyz) background-color and that with the all the 3 methods you can add a saturate(xyz%) to the filter/backdrop-filter !<br>
 <h3>WE'RE DONE ! Now our backdropped text looks cool and is easy to read !</h3>
 <strong><h2>Here you have a live demo: </strong><a href = "https://cristiandavideconte.github.io/applyBackdropFilterBlurToText"/>DEMO</a></h2>
