@@ -29,12 +29,27 @@
 				transition: all 0.3s;
 			}
 
+			#disableShadows {
+				z-index: 2;
+				position: fixed;
+				margin-left:50%;
+				background-color: rgba(0,200,30, 1);
+				-webkit-transform: translate3d(-50%,0,0);
+				transform: translate3d(-50%,0,0);
+			}
+
+			#disableShadows:active {
+					-webkit-transform: translate3d(-50%,0,0) scale3d(0.9,0.9,0.9);
+					transform: translate3d(-50%,0,0) scale3d(0.9,0.9,0.9);
+			}
+
 			button:active {
 					-webkit-transform: scale3d(0.9,0.9,0.9);
 					transform: scale3d(0.9,0.9,0.9);
 			}
 
 			.backgroundLayer {
+					z-index: -1;
 					width: 100vw;
 					height: 100vh;
 					display: flex;
@@ -42,13 +57,54 @@
 			}
 
 			#svgWrapper {
-				width: 100%;
-				height: 200%;
+				position: absolute;
+				width:100%;
+				height: 100%;
+				top:50%;
 			}
 
 			#svg {
 				width: 100%;
-				height: 100%;
+				height: 100%
+			}
+
+			#svg.reset {
+				-webkit-mask-image: none;
+				mask-image: none;
+			}
+
+			#svgShadow {
+				width:100%;
+				height:100%;
+				-webkit-transform: translate3d(0,-100%, 0);
+				transform: translate3d(0,-100%, 0);
+			}
+
+			#svgShadow.enabled {
+				opacity: 1;
+			}
+
+			#svgShadow.disabled {
+				opacity: 0;
+			}
+
+			.method1 .backgroundLayer {
+			  background: url(./images/backgroundOriginal.jpg) 0 0;
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+
+			#svg.method1 {
+				filter: blur(20px) saturate(180%);
+				-webkit-filter: blur(20px) saturate(180%);
+		    -moz-filter: blur(20px) saturate(180%);
+		    -ms-filter: blur(20px) saturate(180%);
+		    -o-filter: blur(20px) saturate(180%);
+
+				background: url(./images/backgroundOriginal.jpg);
+				background-repeat: no-repeat;
+				background-attachment: fixed;
+				background-position: center;
 
 				/* Chrome, Safari and all webkit browsers */
   			-webkit-mask-image: url(./SVG.svg);
@@ -63,53 +119,27 @@
 				mask-repeat: no-repeat;
 			}
 
-			#svg.reset {
-				-webkit-mask-image: none;
-				mask-image: none;
-			}
-
-			.method1 .backgroundLayer {
-			  background: url(./images/backgroundOriginal.jpg) 0 0;
-				background-repeat: no-repeat;
-				background-position: center;
-			}
-/*
-			#svgWrapper.method1 {
-		    filter: drop-shadow(0px 0px 4px rgba(0,0,0,1));
-		    -webkit-filter: drop-shadow(0px 0px 4px rgba(0,0,0,1));
-		    -moz-filter: drop-shadow(0px 0px 4px rgba(0,0,0,1));
-		    -ms-filter: drop-shadow(0px 0px 4px rgba(0,0,0,1));
-		    -o-filter: drop-shadow(0px 0px 4px rgba(0,0,0,1));
-			}
-*/
-			#svg.method1 {
-				filter: blur(20px) saturate(180%);
-				-webkit-filter: blur(20px) saturate(180%);
-		    -moz-filter: blur(20px) saturate(180%);
-		    -ms-filter: blur(20px) saturate(180%);
-		    -o-filter: blur(20px) saturate(180%);
-
-				background: url(./images/backgroundOriginal.jpg);
-				background-repeat: no-repeat;
-				background-attachment: fixed;
-				background-position: center;
-			}
-
 			.method2 .backgroundLayer{
 				background: url(./images/backgroundOriginal.jpg) 0 0;
 				background-repeat: no-repeat;
 				background-position: center;
 			}
 
-			/*#svgWrapper.method2 {
-				background: url(./SVG.svg) 0 0;
-				background-repeat: no-repeat;
-				background-position: center;
-			}*/
-
 			#svg.method2 {
 				-webkit-backdrop-filter: blur(20px) saturate(180%);
 				backdrop-filter: blur(20px) saturate(180%);
+
+				/* Chrome, Safari and all webkit browsers */
+				-webkit-mask-image: url(./SVG.svg);
+				-webkit-mask-size: contain;
+				-webkit-mask-position: center;
+				-webkit-mask-repeat: no-repeat;
+
+				/* FIREFOX */
+				mask-image: url(./SVG.svg);
+				mask-size: contain;
+				mask-position: center;
+				mask-repeat: no-repeat;
 			}
 
 			.method3 .backgroundLayer {
@@ -117,20 +147,24 @@
 				background-repeat: no-repeat;
 				background-position: center;
 			}
-/*
-			#svgWrapper.method3 {
-		    filter: drop-shadow(0px 0px 4px rgba(0,0,0,1));
-		    -webkit-filter: drop-shadow(0px 0px 4px rgba(0,0,0,1));
-		    -moz-filter: drop-shadow(0px 0px 4px rgba(0,0,0,1));
-		    -ms-filter: drop-shadow(0px 0px 4px rgba(0,0,0,1));
-		    -o-filter: drop-shadow(0px 0px 4px rgba(0,0,0,1));
-			}
-*/
+
 			#svg.method3 {
 				background: url(./images/backgroundBlurred.jpg);
 				background-repeat: no-repeat;
 				background-attachment: fixed;
 				background-position: center;
+
+				/* Chrome, Safari and all webkit browsers */
+  			-webkit-mask-image: url(./SVG.svg);
+				-webkit-mask-size: contain;
+				-webkit-mask-position: center;
+				-webkit-mask-repeat: no-repeat;
+
+				/* FIREFOX */
+				mask-image: url(./SVG.svg);
+				mask-size: contain;
+				mask-position: center;
+				mask-repeat: no-repeat;
 			}
 		</style>
 	</head>
@@ -142,29 +176,49 @@
 			<button id = "method2">Method 2: backdrop-filter:blur()</button>
 			<button id = "method3">Method 3: mask over already-blurred background</button>
 		</div>
-		<section id = "svgWrapper"><div id = "svg"></div></section>
+		<button id = "disableShadows">Shadows Enabled</button>
+		<section id = "svgWrapper">
+			<div id = "svg"/></div>
+			<svg id = "svgShadow" class = "enabled">
+				<defs>
+				  <filter id="trans-shadow">
+				  <feGaussianBlur stdDeviation="5"/>
+				  <feComposite operator="out" in2="SourceGraphic"/>
+				  </filter>
+				</defs>
+	  		<image filter="url(#trans-shadow)" x="0" y="0" width="100%" height="100%" xlink:href="./SVG.svg" />
+			</svg>
+			</div>
+		</section>
 	</body>
 	<script>
 		function _changeMethod(className) {
-			let _svgElementWrapper = document.getElementById("svgWrapper");
 			let _svgElement = document.getElementById("svg");
 			window.requestAnimationFrame(() => {
-				_svgElementWrapper.className = className;
 				_svgElement.className = className;
 				document.body.className = className;
-				/* The next 2 istructions allows the mask to properly adjust to the changes */
+				/*
+				 * The next 2 istructions allows the mask to properly adjust to the changes
+				 */
 				_svgElement.classList.add("reset");
 				window.requestAnimationFrame(() => _svgElement.classList.remove("reset"));
 
 				let buttons = document.getElementsByTagName("button");
 				for(const button of buttons)
-					button.style.background = (button.id == className) ? "rgba(0,200,30, 1)" : "rgba(200,30,30, 1)";
+					if(button.id != "disableShadows")
+						button.style.background = (button.id == className) ? "rgba(0,200,30, 1)" : "rgba(200,30,30, 1)";
 			});
 		}
 
 		document.getElementById("method1").addEventListener("click", () => _changeMethod("method1"),{passive:true});
 		document.getElementById("method2").addEventListener("click", () => _changeMethod("method2"),{passive:true});
 		document.getElementById("method3").addEventListener("click", () => _changeMethod("method3"),{passive:true});
+		document.getElementById("disableShadows").addEventListener("click", () => {
+			let name = 	document.getElementById("svgShadow").className.baseVal;
+			document.getElementById("svgShadow").className.baseVal = (name == "enabled") ? "disabled" : "enabled";
+			document.getElementById("disableShadows").innerHTML = (name == "enabled") ? "Shadows Disabled" : "Shadows Enabled";
+			document.getElementById("disableShadows").style.backgroundColor = (name == "enabled") ? "rgba(200,30,30, 1)" : "rgba(0,200,30, 1)";
+		},{passive:true});
 	</script>
 
 	<script>
