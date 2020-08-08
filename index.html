@@ -3,6 +3,13 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<style>
+			:root{
+					--svgPath:./svgs/standard.svg;
+					--svgUrl: url(./svgs/standard.svg);
+
+					--backgroundUrl:url(./images/backgroundOriginal.jpg);
+			}
+
 			html,body {
 				margin: 0;
     		scroll-behavior: smooth;
@@ -89,7 +96,7 @@
 			}
 
 			.method1 .backgroundLayer {
-			  background: url(./images/backgroundOriginal.jpg) 0 0;
+			  background: var(--backgroundUrl) 0 0;
 				background-repeat: no-repeat;
 				background-position: center;
 			}
@@ -101,26 +108,26 @@
 		    -ms-filter: blur(20px) saturate(180%);
 		    -o-filter: blur(20px) saturate(180%);
 
-				background: url(./images/backgroundOriginal.jpg);
+				background: var(--backgroundUrl);
 				background-repeat: no-repeat;
 				background-attachment: fixed;
 				background-position: center;
 
 				/* Chrome, Safari and all webkit browsers */
-  			-webkit-mask-image: url(./SVG.svg);
+  			-webkit-mask-image: var(--svgUrl);
 				-webkit-mask-size: contain;
 				-webkit-mask-position: center;
 				-webkit-mask-repeat: no-repeat;
 
 				/* FIREFOX */
-				mask-image: url(./SVG.svg);
+				mask-image: var(--svgUrl);
 				mask-size: contain;
 				mask-position: center;
 				mask-repeat: no-repeat;
 			}
 
 			.method2 .backgroundLayer{
-				background: url(./images/backgroundOriginal.jpg) 0 0;
+				background: var(--backgroundUrl) 0 0;
 				background-repeat: no-repeat;
 				background-position: center;
 			}
@@ -133,20 +140,20 @@
 				backdrop-filter: blur(13px) saturate(250%);
 
 				/* Chrome, Safari and all webkit browsers */
-				-webkit-mask-image: url(./SVG.svg);
+				-webkit-mask-image: var(--svgUrl);
 				-webkit-mask-size: contain;
 				-webkit-mask-position: center;
 				-webkit-mask-repeat: no-repeat;
 
 				/* FIREFOX */
-				mask-image: url(./SVG.svg);
+				mask-image: var(--svgUrl);
 				mask-size: contain;
 				mask-position: center;
 				mask-repeat: no-repeat;
 			}
 
 			.method3 .backgroundLayer {
-				background: url(./images/backgroundOriginal.jpg) 0 0;
+				background: var(--backgroundUrl) 0 0;
 				background-repeat: no-repeat;
 				background-position: center;
 			}
@@ -158,13 +165,13 @@
 				background-position: center;
 
 				/* Chrome, Safari and all webkit browsers */
-  			-webkit-mask-image: url(./SVG.svg);
+  			-webkit-mask-image: var(--svgUrl);
 				-webkit-mask-size: contain;
 				-webkit-mask-position: center;
 				-webkit-mask-repeat: no-repeat;
 
 				/* FIREFOX */
-				mask-image: url(./SVG.svg);
+				mask-image: var(--svgUrl);
 				mask-size: contain;
 				mask-position: center;
 				mask-repeat: no-repeat;
@@ -189,7 +196,7 @@
 				  <feComposite operator = "out" in2 = "SourceGraphic"/>
 				  </filter>
 				</defs>
-	  		<image filter = "url(#trans-shadow)" x = "0" y = "0" width = "100%" height = "100%" xlink:href = "./SVG.svg" />
+	  		<image id = "svgShadowImage" filter = "url(#trans-shadow)" x = "0" y = "0" width = "100%" height = "100%" />
 			</svg>
 			</div>
 		</section>
@@ -222,6 +229,9 @@
 			document.getElementById("disableShadows").innerHTML = (name == "enabled") ? "Shadows Disabled" : "Shadows Enabled";
 			document.getElementById("disableShadows").style.backgroundColor = (name == "enabled") ? "rgba(200,30,30, 1)" : "rgba(0,200,30, 1)";
 		},{passive:true});
+
+		let path = getComputedStyle(document.body).getPropertyValue("--svgPath").trim();
+		document.getElementById("svgShadowImage").setAttribute("href", path);
 	</script>
 
 	<script>
