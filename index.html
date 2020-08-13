@@ -2,65 +2,12 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="./js/demo.js"></script>
+	  <link rel="stylesheet" href="./secondaryCss/secondaryCss.css">
 		<style>
-			:root{
-					--svgPath:./svgs/standard.svg;
-					--svgUrl: url(./svgs/standard.svg);
-
-					--backgroundUrl:url(./images/backgroundOriginal.jpg);
-			}
-
-			html,body {
-				margin: 0;
-    		scroll-behavior: smooth;
-			}
-
-			#buttonSection {
-				z-index: 2;
-				position:fixed;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				width: 100vw;
-				top: 50%;
-			}
-
-			button {
-				cursor: pointer;
-				margin: 0 5vw;
-				padding: 3vmin;
-				outline:none;
-				border:none;
-				border-radius: 1rem;
-				background-color: rgba(200,30,30, 1);
-				transition: all 0.3s;
-			}
-
-			#disableShadows {
-				z-index: 2;
-				position: fixed;
-				margin-left:50%;
-				background-color: rgba(0,200,30, 1);
-				-webkit-transform: translate3d(-50%,0,0);
-				transform: translate3d(-50%,0,0);
-			}
-
-			#disableShadows:active {
-					-webkit-transform: translate3d(-50%,0,0) scale3d(0.9,0.9,0.9);
-					transform: translate3d(-50%,0,0) scale3d(0.9,0.9,0.9);
-			}
-
-			button:active {
-					-webkit-transform: scale3d(0.9,0.9,0.9);
-					transform: scale3d(0.9,0.9,0.9);
-			}
-
-			.backgroundLayer {
-					z-index: -1;
-					width: 100vw;
-					height: 100vh;
-					display: flex;
-					position: fixed;
+			:root {
+				--svgPath:./svgs/standard.svg;
+				--svgUrl: url(./svgs/standard.svg);
 			}
 
 			#svgWrapper {
@@ -95,12 +42,6 @@
 				opacity: 0;
 			}
 
-			.method1 .backgroundLayer {
-			  background: var(--backgroundUrl) 0 0;
-				background-repeat: no-repeat;
-				background-position: center;
-			}
-
 			#svg.method1 {
 				filter: blur(20px) saturate(180%);
 				-webkit-filter: blur(20px) saturate(180%);
@@ -126,12 +67,6 @@
 				mask-repeat: no-repeat;
 			}
 
-			.method2 .backgroundLayer{
-				background: var(--backgroundUrl) 0 0;
-				background-repeat: no-repeat;
-				background-position: center;
-			}
-
 			#svg.method2 {
 				-webkit-transform: translate3d(0, 0, 0);
 				transform: translate3d(0, 0, 0);
@@ -150,12 +85,6 @@
 				mask-size: contain;
 				mask-position: center;
 				mask-repeat: no-repeat;
-			}
-
-			.method3 .backgroundLayer {
-				background: var(--backgroundUrl) 0 0;
-				background-repeat: no-repeat;
-				background-position: center;
 			}
 
 			#svg.method3 {
@@ -179,14 +108,46 @@
 		</style>
 	</head>
 
-	<body>
-		<section class = "backgroundLayer"></section>
+	<body onload = "init()">
+
+
+
+		<!-- MENU -->
+		<button id = "hideButtonSection">
+				<span class="tooltiptext">Hide/Show the menu</span>
+		</button>
 		<div id = "buttonSection">
-			<button id = "method1">Method 1: filter:blur()</button>
-			<button id = "method2">Method 2: backdrop-filter:blur()</button>
-			<button id = "method3">Method 3: mask over already-blurred background</button>
+			<button id = "method1">Method 1
+				  <span class="tooltiptext">filter:blur()</span>
+			</button>
+			<button id = "method2">Method 2
+				  <span class="tooltiptext">backdrop-filter:blur()</span>
+			</button>
+			<button id = "method3">Method 3
+				  <span class="tooltiptext">Mask over already-blurred background</span>
+			</button>
+			<button id = "disableShadows">Shadows Enabled
+					<span class="tooltiptext">Toggle SVG Shadow ON/OFF</span>
+			</button>
 		</div>
-		<button id = "disableShadows">Shadows Enabled</button>
+
+
+
+
+
+
+		<!-- BACKGROUND -->
+		<section class = "backgroundLayer"></section>
+
+
+
+
+
+
+
+
+
+		<!-- HOW TO APPLY BACKDROP-FILTER:BLUR ON TEXT  -->
 		<section id = "svgWrapper">
 			<div id = "svg"/></div>
 			<svg id = "svgShadow" class = "enabled">
@@ -200,51 +161,4 @@
 			</svg>
 		</section>
 	</body>
-	<script>
-		function _changeMethod(className) {
-			let _svgElement = document.getElementById("svg");
-			window.requestAnimationFrame(() => {
-				_svgElement.className = className;
-				document.body.className = className;
-				/*
-				 * The next 2 istructions allows the mask to properly adjust to the changes
-				 */
-				_svgElement.classList.add("reset");
-				window.requestAnimationFrame(() => _svgElement.classList.remove("reset"));
-
-				let buttons = document.getElementsByTagName("button");
-				for(const button of buttons)
-					if(button.id != "disableShadows")
-						button.style.background = (button.id == className) ? "rgba(0,200,30, 1)" : "rgba(200,30,30, 1)";
-			});
-		}
-
-		document.getElementById("method1").addEventListener("click", () => _changeMethod("method1"),{passive:true});
-		document.getElementById("method2").addEventListener("click", () => _changeMethod("method2"),{passive:true});
-		document.getElementById("method3").addEventListener("click", () => _changeMethod("method3"),{passive:true});
-		document.getElementById("disableShadows").addEventListener("click", () => {
-			let name = 	document.getElementById("svgShadow").className.baseVal;
-			document.getElementById("svgShadow").className.baseVal = (name == "enabled") ? "disabled" : "enabled";
-			document.getElementById("disableShadows").innerHTML = (name == "enabled") ? "Shadows Disabled" : "Shadows Enabled";
-			document.getElementById("disableShadows").style.backgroundColor = (name == "enabled") ? "rgba(200,30,30, 1)" : "rgba(0,200,30, 1)";
-		},{passive:true});
-
-		let path = getComputedStyle(document.body).getPropertyValue("--svgPath").trim();
-		document.getElementById("svgShadowImage").setAttribute("href", path);
-	</script>
-
-	<script>
-		/*
-		 * Performs a scrolling test
-		 */
-		let _testTimes = 0;
-		function testSmoothness() {
-			if(_testTimes < 50) {
-				let _scrollAmmount = (_testTimes % 2 == 0) ? window.scrollY + window.innerHeight : window.scrollY - window.innerHeight;
-				window.scroll(0, _scrollAmmount);
-				_testTimes++;
-				setTimeout(testSmoothness, 800);
-			}
-		}
-	</script>
 </html>
