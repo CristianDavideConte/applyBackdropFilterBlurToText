@@ -8,7 +8,20 @@
 			:root {
 				--svgPath:./svgs/standard.svg;
 				--svgUrl: url(./svgs/standard.svg);
-				--svgBackgroundUrl:url(./images/backgroundOriginal.jpg);
+
+				--backgroundUrl:url(./images/backgroundOriginal.jpg);
+			}
+
+			.backgroundLayer {
+				z-index: -1;
+				width: 100vw;
+				height: 100vh;
+				display: flex;
+				position: fixed;
+
+				background: var(--backgroundUrl) 0 0;
+				background-repeat: no-repeat;
+				background-position: center;
 			}
 
 			#svgWrapper {
@@ -50,7 +63,7 @@
 		    -ms-filter: blur(20px) saturate(180%);
 		    -o-filter: blur(20px) saturate(180%);
 
-				background: var(--svgBackgroundUrl);
+				background: var(--backgroundUrl);
 				background-repeat: no-repeat;
 				background-attachment: fixed;
 				background-position: center;

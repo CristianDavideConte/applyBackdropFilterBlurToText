@@ -1,22 +1,6 @@
-:root {
-  --backgroundUrl:url(../images/backgroundOriginal.jpg);
-}
-
 html,body {
 	margin: 0;
 	scroll-behavior: smooth;
-}
-
-.backgroundLayer {
-	z-index: -1;
-	width: 100vw;
-	height: 100vh;
-	display: flex;
-	position: fixed;
-
-	background: var(--backgroundUrl) 0 0;
-	background-repeat: no-repeat;
-	background-position: center;
 }
 
 #buttonSection {
