@@ -3,17 +3,14 @@ function init() {
   document.getElementById("method2").addEventListener("click", () => _changeMethod("method2"),{passive:true});
   document.getElementById("method3").addEventListener("click", () => _changeMethod("method3"),{passive:true});
 
+  document.getElementById("hideButtonSection").addEventListener("click", () => document.getElementById("buttonSection").classList.toggle("hidden"),{passive:true});
   document.getElementById("disableShadows").addEventListener("click", () => {
     let name = 	document.getElementById("svgShadow").className.baseVal;
     document.getElementById("svgShadow").className.baseVal = (name == "enabled") ? "disabled" : "enabled";
     document.getElementById("disableShadows").innerHTML = (name == "enabled") ? "Shadows Disabled" : "Shadows Enabled";
+    document.getElementById("disableShadows").innerHTML += "<span class='tooltiptext'>Toggle SVG Shadow</span>";
     document.getElementById("disableShadows").style.borderColor = (name == "enabled") ? "rgba(200,30,30, 1)" : "rgba(0,200,30, 1)";
   },{passive:true});
-
-  document.getElementById("hideButtonSection").addEventListener("click", () => {
-    document.getElementById("buttonSection").classList.toggle("hidden");
-    document.getElementById("hideButtonSection").classList.toggle("hidden");
-  });
 
   let path = getComputedStyle(document.body).getPropertyValue("--svgPath").trim();
   document.getElementById("svgShadowImage").setAttribute("href", path);

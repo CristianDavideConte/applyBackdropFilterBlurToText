@@ -1,3 +1,13 @@
+@keyframes tooltipPopUp {
+	0% {
+		opacity: 0;
+	}
+
+	20%, 80%{
+		opacity: 1;
+	}
+}
+
 html,body {
 	margin: 0;
 	scroll-behavior: smooth;
@@ -71,8 +81,6 @@ button:active {
 }
 
 #hideButtonSection {
-  z-index: 3;
-  color:white;
   position: fixed;
   border-radius: 100%;
   width: 5vh;
@@ -80,14 +88,14 @@ button:active {
   top: 50%;
   margin: 0;
 
-  -webkit-transform: translate3d(calc(20vw - 50%), -50%, 0);
-  transform: translate3d(calc(20vw - 50%), -50%, 0);
+  -webkit-transform: translate3d(10vw, -50%, 0);
+  transform: translate3d(10vw, -50%, 0);
 }
 
-#hideButtonSection.hidden {
+.hidden #hideButtonSection {
 	border-color: rgba(0, 200, 30, 1);
-  -webkit-transform: translate3d(0%,-50%, 0);
-	transform: translate3d(0%, -50%, 0);
+  -webkit-transform: translate3d(calc(10vw + 100%),-50%, 0);
+	transform: translate3d(calc(10vw + 100%), -50%, 0);
 }
 
 .tooltiptext {
@@ -113,11 +121,7 @@ button:active {
 }
 
 button:hover .tooltiptext {
-    opacity: 1;
-}
-
-button:active .tooltiptext {
-    opacity: 0;
+	animation: tooltipPopUp 2.5s;
 }
 
 @media only screen and (max-width: 1081px) {
@@ -126,7 +130,12 @@ button:active .tooltiptext {
   }
 
   #hideButtonSection {
-    -webkit-transform: translate3d(calc(27vw - 50%), -50%, 0);
-    transform: translate3d(calc(27vw - 50%), -50%, 0);
+    -webkit-transform: translate3d(calc(27vw / 2), -50%, 0);
+    transform: translate3d(calc(27vw / 2), -50%, 0);
   }
+
+	.hidden #hideButtonSection {
+	  -webkit-transform: translate3d(calc(27vw / 2 + 100%),-50%, 0);
+		transform: translate3d(calc(27vw / 2 + 100%), -50%, 0);
+	}
 }
