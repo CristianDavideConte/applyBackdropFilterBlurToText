@@ -3,13 +3,14 @@ function init() {
   document.getElementById("method2").addEventListener("click", () => _changeMethod("method2"),{passive:true});
   document.getElementById("method3").addEventListener("click", () => _changeMethod("method3"),{passive:true});
 
-  document.getElementById("hideButtonSection").addEventListener("click", () => document.getElementById("buttonSection").classList.toggle("hidden"),{passive:true});
+  document.getElementById("hideButtonSectionLeft").addEventListener("click", () => document.getElementById("buttonSectionLeft").classList.toggle("hidden"),{passive:true});
+  document.getElementById("hideButtonSectionRight").addEventListener("click", () => document.getElementById("buttonSectionRight").classList.toggle("hidden"),{passive:true});
   document.getElementById("disableShadows").addEventListener("click", () => {
     let name = 	document.getElementById("svgShadow").className.baseVal;
     document.getElementById("svgShadow").className.baseVal = (name == "enabled") ? "disabled" : "enabled";
     document.getElementById("disableShadows").innerHTML = (name == "enabled") ? "Shadows Disabled" : "Shadows Enabled";
     document.getElementById("disableShadows").innerHTML += "<span class='tooltiptext'>Toggle SVG Shadow</span>";
-    document.getElementById("disableShadows").style.borderColor = (name == "enabled") ? "rgba(200,30,30, 1)" : "rgba(0,200,30, 1)";
+    document.getElementById("disableShadows").style.borderColor = (name == "enabled") ? "rgba(200, 30, 30, 1)" : "rgba(0, 200, 30, 1)";
   },{passive:true});
 
   let path = getComputedStyle(document.body).getPropertyValue("--svgPath").trim();
@@ -29,8 +30,8 @@ function _changeMethod(className) {
 
     let buttons = document.getElementsByTagName("button");
     for(const button of buttons)
-      if(button.id != "disableShadows" && button.id != "hideButtonSection")
-        button.style.borderColor = (button.id == className) ? "rgba(0,200,30, 1)" : "rgba(200,30,30, 1)";
+      if(button.id != "disableShadows" && button.id != "changeBackground" && !button.classList.contains("hideButtonSection"))
+        button.style.borderColor = (button.id == className) ? "rgba(0, 200, 30, 1)" : "rgba(200, 30, 30, 1)";
   });
 }
 

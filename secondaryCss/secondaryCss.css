@@ -13,7 +13,7 @@ html,body {
 	scroll-behavior: smooth;
 }
 
-#buttonSection {
+.buttonSection {
 	z-index: 2;
 	position:fixed;
 	display: flex;
@@ -31,14 +31,27 @@ html,body {
   box-shadow: 0 0 1rem rgba(0, 0, 0, 1), inset 0 0 1rem rgba(255, 255, 255, 0.3);
 
   transition: 0.3s ease;
-
-  -webkit-transform: translate3d(0, -50%, 0);
-	transform: translate3d(0, -50%, 0);
 }
 
-#buttonSection.hidden {
+#buttonSectionLeft {
+	  -webkit-transform: translate3d(0, -50%, 0);
+		transform: translate3d(0, -50%, 0);
+}
+
+#buttonSectionRight {
+		height: 15vh; /* 12vh is the signle button's heiht + 3vh is the total padding */
+	  -webkit-transform: translate3d(calc(100vw - 20vw), -50%, 0);
+		transform: translate3d(calc(100vw - 20vw), -50%, 0);
+}
+
+#buttonSectionLeft.hidden {
   -webkit-transform: translate3d(-100%,-50%, 0);
 	transform: translate3d(-100%, -50%, 0);
+}
+
+#buttonSectionRight.hidden {
+	-webkit-transform: translate3d(100vw,-50%, 0);
+	transform: translate3d(100vw, -50%, 0);
 }
 
 button {
@@ -72,30 +85,51 @@ button {
 
 button:active {
     box-shadow:  0.1rem 0.1rem 0.6rem rgba(0, 0, 0, 0.7), -0.1rem -0.1rem 0.4rem rgba(255, 255, 255, 0.3), inset 0.1rem 0.1rem 1rem rgba(0, 0, 0, 1), inset -0.1rem -0.1rem 0.7rem rgba(255, 255, 255, 0.5);
-		-webkit-transform: scale3d(0.99,0.99,0.99);
-		transform: scale3d(0.99,0.99,0.99);
+}
+
+#changeBackground {
+	height: 80%;
+}
+
+#changeBackground:active {
+	border-color: rgba(0, 200, 30, 1);
 }
 
 #disableShadows {
 	border-color: rgba(0, 200, 30, 1);
 }
 
-#hideButtonSection {
+.hideButtonSection {
   position: fixed;
   border-radius: 100%;
   width: 5vh;
   height: 5vh;
   top: 50%;
   margin: 0;
-
-  -webkit-transform: translate3d(10vw, -50%, 0);
-  transform: translate3d(10vw, -50%, 0);
 }
 
-.hidden #hideButtonSection {
+.hidden .hideButtonSection {
 	border-color: rgba(0, 200, 30, 1);
-  -webkit-transform: translate3d(calc(10vw + 100%),-50%, 0);
+}
+
+#hideButtonSectionLeft {
+	  -webkit-transform: translate3d(10vw, -50%, 0);
+	  transform: translate3d(10vw, -50%, 0);
+}
+
+#hideButtonSectionRight {
+  -webkit-transform: translate3d(-10vw, -50%, 0);
+  transform: translate3d(-10vw, -50%, 0);
+}
+
+.hidden #hideButtonSectionLeft {
+	-webkit-transform: translate3d(calc(10vw + 100%),-50%, 0);
 	transform: translate3d(calc(10vw + 100%), -50%, 0);
+}
+
+.hidden #hideButtonSectionRight {
+	-webkit-transform: translate3d(calc(-10vw - 100%),-50%, 0);
+	transform: translate3d(calc(-10vw - 100%), -50%, 0);
 }
 
 .tooltiptext {
@@ -124,17 +158,23 @@ button:hover .tooltiptext {
 	animation: tooltipPopUp 2.5s;
 }
 
+#hideButtonSectionRight .tooltiptext,
+#changeBackground .tooltiptext {
+	transform: translateX(-100%);
+}
+
+
 @media only screen and (max-width: 1081px) {
-  #buttonSection {
+  .buttonSection {
   	width: 27vw;
   }
 
-  #hideButtonSection {
+  #hideButtonSectionLeft {
     -webkit-transform: translate3d(calc(27vw / 2), -50%, 0);
     transform: translate3d(calc(27vw / 2), -50%, 0);
   }
 
-	.hidden #hideButtonSection {
+	.hidden #hideButtonSectionLeft {
 	  -webkit-transform: translate3d(calc(27vw / 2 + 100%),-50%, 0);
 		transform: translate3d(calc(27vw / 2 + 100%), -50%, 0);
 	}
