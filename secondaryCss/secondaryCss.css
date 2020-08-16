@@ -169,13 +169,29 @@ button:hover .tooltiptext {
   	width: 27vw;
   }
 
+	#buttonSectionRight {
+			height: 15vh; /* 12vh is the signle button's heiht + 3vh is the total padding */
+		  -webkit-transform: translate3d(calc(100vw - 27vw), -50%, 0);
+			transform: translate3d(calc(100vw - 27vw), -50%, 0);
+	}
+
   #hideButtonSectionLeft {
     -webkit-transform: translate3d(calc(27vw / 2), -50%, 0);
     transform: translate3d(calc(27vw / 2), -50%, 0);
   }
 
+	#hideButtonSectionRight {
+	  -webkit-transform: translate3d(calc(-27vw / 2), -50%, 0);
+	  transform: translate3d(calc(-27vw / 2), -50%, 0);
+	}
+
 	.hidden #hideButtonSectionLeft {
-	  -webkit-transform: translate3d(calc(27vw / 2 + 100%),-50%, 0);
+		-webkit-transform: translate3d(calc(27vw / 2 + 100%),-50%, 0);
 		transform: translate3d(calc(27vw / 2 + 100%), -50%, 0);
+	}
+
+	.hidden #hideButtonSectionRight {
+		-webkit-transform: translate3d(calc(-27vw / 2 - 100%),-50%, 0);
+		transform: translate3d(calc(-27vw / 2 - 100%), -50%, 0);
 	}
 }
