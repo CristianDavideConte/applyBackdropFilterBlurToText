@@ -133,9 +133,7 @@
 
 		<!-- MENU SECTION -->
 		<div id  = "buttonSectionLeft" class = "buttonSection">
-			<button id = "hideButtonSectionLeft" class = "hideButtonSection">
-					<span class="tooltiptext">Hide/Show the menu</span>
-			</button>
+			<button id = "hideButtonSectionLeft" class = "hideButtonSection"></button>
 			<button id = "method1">Method 1
 				  <span class="tooltiptext">filter:blur()</span>
 			</button>
@@ -150,12 +148,10 @@
 			</button>
 		</div>
 
-		<div id  = "buttonSectionRight" class = "buttonSection">
-			<button id = "hideButtonSectionRight" class = "hideButtonSection">
-					<span class="tooltiptext">Hide/Show the menu</span>
-			</button>
+		<div id  = "buttonSectionRight" class = "buttonSection hidden">
+			<button id = "hideButtonSectionRight" class = "hideButtonSection hidden"></button>
 			<button id = "changeBackground">Change Wallpaper
-				  <span class="tooltiptext">Change the background wallpaper</span>
+				<input id = "changeBackgroundInputField" type = "file" name = "name" accept="image/*" style = "display:none;" />
 			</button>
 		</div>
 

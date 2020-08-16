@@ -13,6 +13,36 @@ function init() {
     document.getElementById("disableShadows").style.borderColor = (name == "enabled") ? "rgba(200, 30, 30, 1)" : "rgba(0, 200, 30, 1)";
   },{passive:true});
 
+  document.getElementById("changeBackground").addEventListener("click", () => document.getElementById("changeBackgroundInputField").click(), {passive:true});
+  document.getElementById("changeBackgroundInputField").addEventListener("change", event => {
+     // getting a hold of the file reference
+     let file = event.target.files[0];
+     let fileName = event.target.value;
+
+     try {
+       //Validation
+       var idxDot = fileName.lastIndexOf(".") + 1;
+       var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+       if (extFile !== "jpg" && extFile !== "jpeg" && extFile !== "png") {
+         throw "No valid image was selected !";
+       }
+
+       // setting up the reader
+       let reader = new FileReader();
+       reader.readAsDataURL(file);
+
+       // here we tell the reader what to do when it's done reading...
+       reader.addEventListener("load", readerEvent => {
+          let content = readerEvent.target.result; // this is the content!
+          document.documentElement.style.setProperty("--backgroundUrl", "url(" + content + ")");
+          document.getElementById("method3").disabled = true;
+          document.getElementById("method2").click();
+       }, {passive:true});
+     } catch (exception) {
+       alert(exception);
+     }
+  }, {passive:true});
+
   let path = getComputedStyle(document.body).getPropertyValue("--svgPath").trim();
   document.getElementById("svgShadowImage").setAttribute("href", path);
 }
