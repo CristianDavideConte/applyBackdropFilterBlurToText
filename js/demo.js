@@ -1,3 +1,5 @@
+var validBackgroundImageFormats = ["jpg", "jpeg", "png", "gif", "svg"];
+
 function init() {
   document.getElementById("method1").addEventListener("click", () => _changeMethod("method1"),{passive:true});
   document.getElementById("method2").addEventListener("click", () => _changeMethod("method2"),{passive:true});
@@ -23,21 +25,30 @@ function init() {
        //Validation
        var idxDot = fileName.lastIndexOf(".") + 1;
        var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
-       if (extFile !== "jpg" && extFile !== "jpeg" && extFile !== "png") {
+       if (!validBackgroundImageFormats.includes(extFile) && extFile != "")
          throw "No valid image was selected !";
+      else if(extFile != "") {
+         // setting up the reader
+         let reader = new FileReader();
+         reader.readAsDataURL(file);
+
+         // here we tell the reader what to do when it's done reading...
+         reader.addEventListener("load", readerEvent => {
+            let content = readerEvent.target.result; // this is the content!
+            window.requestAnimationFrame(() => document.documentElement.style.setProperty("--backgroundUrl", "url(" + content + ")"));
+         }, {passive:true});
+
+         window.requestAnimationFrame(() => {
+           if (document.getElementById("method3").style.borderColor == "rgb(0, 200, 30)")
+             document.getElementById("method2").click();
+           document.getElementById("method3").disabled = true;//Method3 requires to have a pre-blurredbackground image
+
+           if(!document.getElementById("buttonSectionLeft").classList.contains("hidden"))
+             document.getElementById("hideButtonSectionLeft").click();
+           if(!document.getElementById("buttonSectionRight").classList.contains("hidden"))
+             document.getElementById("hideButtonSectionRight").click();
+         });
        }
-
-       // setting up the reader
-       let reader = new FileReader();
-       reader.readAsDataURL(file);
-
-       // here we tell the reader what to do when it's done reading...
-       reader.addEventListener("load", readerEvent => {
-          let content = readerEvent.target.result; // this is the content!
-          document.documentElement.style.setProperty("--backgroundUrl", "url(" + content + ")");
-          document.getElementById("method3").disabled = true;
-          document.getElementById("method2").click();
-       }, {passive:true});
      } catch (exception) {
        alert(exception);
      }
@@ -45,13 +56,14 @@ function init() {
 
   let path = getComputedStyle(document.body).getPropertyValue("--svgPath").trim();
   document.getElementById("svgShadowImage").setAttribute("href", path);
+  document.getElementById("method1").click();     //Method1 is the default one
 }
 
-function _changeMethod(className) {
+function _changeMethod(methodName) {
   let _svgElement = document.getElementById("svg");
   window.requestAnimationFrame(() => {
-    _svgElement.className = className;
-    document.body.className = className;
+    _svgElement.className = methodName;
+    document.body.className = methodName;
     /*
      * The next 2 istructions allows the mask to properly adjust to the changes
      */
@@ -61,7 +73,7 @@ function _changeMethod(className) {
     let buttons = document.getElementsByTagName("button");
     for(const button of buttons)
       if(button.id != "disableShadows" && button.id != "changeBackground" && !button.classList.contains("hideButtonSection"))
-        button.style.borderColor = (button.id == className) ? "rgba(0, 200, 30, 1)" : "rgba(200, 30, 30, 1)";
+        button.style.borderColor = (button.id == methodName) ? "rgba(0, 200, 30, 1)" : "rgba(200, 30, 30, 1)";
   });
 }
 
