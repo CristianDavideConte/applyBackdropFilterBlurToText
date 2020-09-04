@@ -1,5 +1,4 @@
-# Is there a way to apply backdrop-filter:blur() to a text element?
-# YES!
+# How to apply backdrop-filter:blur() to a text element?
 
 As far as i know there's **no way to directly apply the backdrop-filter:blur to a text** element. But we can work on it.<br> 
 I have two possible solutions: <br>
