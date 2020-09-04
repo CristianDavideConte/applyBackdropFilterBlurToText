@@ -54,5 +54,5 @@ This is code for reference if you need it:
 </svg>
 ```
 **If the text still isn't easy to read** remember that with the Method 2 you can still set an rgba(255,255,255,0.xyz) background-color and that with the all the 3 methods you can add a saturate(xyz%) to the filter/backdrop-filter !<br>
-### WE'RE DONE ! Now our backdropped text looks cool and is easy to read !
+### WE'RE DONE ! Now our backdropped text looks cool and it's easy to read !
 ## Here you have a live demo: <a href = "https://cristiandavideconte.github.io/applyBackdropFilterBlurToText"/>DEMO</a></h2>
