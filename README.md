@@ -1,6 +1,6 @@
 # How do I apply backdrop-filter:blur() to a text element? ![](https://github.com/CristianDavideConte/applyBackdropFilterBlurToText/blob/master/images/favicon.png)
 
-As far as i know there's **no way to directly apply the backdrop-filter:blur to a text** element. But we can work on it.<br> 
+As far as I know there's **no way to directly apply the backdrop-filter:blur to a text** element. But we can work on it.<br> 
 I have two possible solutions: <br>
 ## First solution: The Slowest One
 1. Create a container
@@ -30,7 +30,7 @@ If you are curious use the call the testSmoothness() method (i suggest to use se
 
 ## Great...but the contrast is low :(
 ### Well...let's add a shadow then ;)
-Applying the blur effect alone will result in "text" with a low contrast-ratio which is hard to read. To counter this i applied a shadow to the svg.
+Applying the blur effect alone will result in "text" with a low contrast-ratio which is hard to read. To counter this I applied a shadow to the svg.
 And this is how it's done:
 1. Create an svg element in the document
 2. In the <defs> tag create a filter with the <filter> tag and give it an id
