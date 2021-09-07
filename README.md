@@ -1,15 +1,21 @@
-# How do I apply backdrop-filter:blur() to a text element? ![](https://github.com/CristianDavideConte/applyBackdropFilterBlurToText/blob/master/images/favicon.png)
 
-As far as I know there's **no way to directly apply the backdrop-filter:blur to a text** element. But we can work on it.<br> 
-I have two possible solutions: <br>
+<br/><p align="center">
+    <a href="https://github.com/CristianDavideConte/applyBackdropFilterBlurToText">
+        <img src="https://github.com/CristianDavideConte/applyBackdropFilterBlurToText/blob/master/images/logo.png" height="140">
+    </a>
+</p>
+<h1 align="center">How do I apply backdrop-filter:blur() to a text element? </h1>
+
+<p align="center"> As far as I know there's <strong>no way to directly apply the backdrop-filter:blur to a text</strong> element.</p><br/> 
+
 ## First solution: The Slowest One
 1. Create a container
 2. Apply a background to it (or to its ::before pseudo-element)
 3. Use the filter:blur so that the container's background is blurred
 4. Apply a svg mask onto the svg element and then apply the same background to the container (or to its ::before pseudo-element)
 
-This way we have the blurried background on top that gets masked and the non-blurry version under it.<br><br>
-**NOTE:** applying the background to the container's ::before pseudo element will allow you to modify the background  without touching the svg mask (usefull if you need to flip the background to create more contrast but you can't modify the original image).<br><br>
+This way we have the blurried background on top that gets masked and the non-blurry version under it.<br/><br/>
+**NOTE:** applying the background to the container's ::before pseudo element will allow you to modify the background  without touching the svg mask (usefull if you need to flip the background to create more contrast but you can't modify the original image).<br/><br/>
 
 ## Second solution: The Fastest One
 1. Create a container
@@ -17,9 +23,9 @@ This way we have the blurried background on top that gets masked and the non-blu
 3. Apply the backdrop-filter:blur to the svg element
 4. Apply the svg-mask to the svg element
 
-This way we have the effect we would have if the backdrop-filter: blur could be applied to text.<br>
-**This one is the one which performs the best** because it's the only method that doesn't require the svg element to duplicate the background (which would have to be repainted at every frame because of the background-attachment:fixed attribute).<br><br>
-If you are curious use the call the testSmoothness() method (i suggest to use setTimeout(testSmoothness, 5000)) in the browser console with the browser profiler and see the results ;)<br><br>
+This way we have the effect we would have if the backdrop-filter: blur could be applied to text.<br/>
+**This one is the one which performs the best** because it's the only method that doesn't require the svg element to duplicate the background (which would have to be repainted at every frame because of the background-attachment:fixed attribute).<br/><br/>
+If you are curious use the call the testSmoothness() method (i suggest to use setTimeout(testSmoothness, 5000)) in the browser console with the browser profiler and see the results ;)<br/><br/>
 
 ## Third solution: The Most Compatible One
 #### (requires to have 2 copies of the background, one of which already blurred)
@@ -52,6 +58,6 @@ This is code for reference if you need it:
   <image filter = "url(#trans-shadow)" x = "0" y = "0" width = "100%" height = "100%" xlink:href = "./SVG.svg" />
 </svg>
 ```
-**If the text still isn't easy to read** remember that with the Method 2 you can still set an rgba(255,255,255,0.xyz) background-color and that with the all the 3 methods you can add a saturate(xyz%) to the filter/backdrop-filter !<br>
-### WE'RE DONE ! Now our backdropped text looks cool and it's easy to read !
-## Here you have a live demo: <a href = "https://cristiandavideconte.github.io/applyBackdropFilterBlurToText"/>DEMO</a></h2>
+**If the text still isn't easy to read** remember that with the Method 2 you can still set an rgba(255,255,255,0.xyz) background-color and that with the all the 3 methods you can add a saturate(xyz%) to the filter/backdrop-filter!<br/>
+### WE'RE DONE! Now our backdropped text looks cool and it's easy to read!
+## Here you have a live demo: <a href = "https://cristiandavideconte.github.io/applyBackdropFilterBlurToText"/>DEMO</a>
