@@ -47,7 +47,7 @@ And this is how it's done:
 7. Set the "xlink:href" attribute's path of the image to the same one of your svg's path
 
 This is code for reference if you need it:
-```
+```html
 <svg>
   <defs>
     <filter id = "trans-shadow">
