@@ -46,7 +46,7 @@ And this is how it's done:
 6. Set the filter attribute's url of the image to the same id you gave to the <filter> tag
 7. Set the "xlink:href" attribute's path of the image to the same one of your svg's path
 
-This is code for reference if you need it:
+This is the reference code:
 ```html
 <svg>
   <defs>
