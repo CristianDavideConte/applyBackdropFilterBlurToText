@@ -36,8 +36,8 @@ You can test the performances by using the `testSmoothness()` method in the brow
 4. Apply the blurry version of the background to the svg element
 5. Apply the svg-mask to the svg element
 
-## Great...but the contrast is low :(
-### Well...let's add a shadow then ;)
+## Great! But the contrast is low...
+### Let's add a shadow then!
 Applying the blur effect alone will give us a low contrast-ratio (hard to read text). <br/>
 To counter this I applied a shadow to the svg: <br/>
 1. Create a svg element in the document
