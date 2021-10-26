@@ -4,7 +4,7 @@
         <img src="https://github.com/CristianDavideConte/applyBackdropFilterBlurToText/blob/master/images/logo.png" height="140">
     </a>
 </p>
-<h1 align="center">How do I apply `backdrop-filter:blur` to a text element? </h1>
+<h1 align="center">How do I apply <code>backdrop-filter:blur</code> to a text element? </h1>
 
 <p align="center"> As far as I know there's <strong>no way to directly apply the backdrop-filter:blur to a text</strong> element.</p><br/> 
 
