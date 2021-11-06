@@ -8,12 +8,18 @@
 	}
 }
 
+
+
+
 * {
 	-webkit-tap-highlight-color:rgba(0,0,0,0);
 	-webkit-appearance: none;
 	-webkit-user-drag:none !important;
-	user-drag:none !important;
 }
+
+
+
+
 
 /* width */
 ::-webkit-scrollbar {
@@ -27,9 +33,9 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-		background-color: rgba(50,50,50,1);
-    border-radius: 4rem;
-	  box-shadow: inset 0.1rem 0.1rem 0.4rem rgba(0, 0, 0, 0.6), inset -0.1rem -0.1rem 0.4rem rgba(255, 255, 255, 0.3);
+	background-color: rgba(50,50,50,1);
+	border-radius: 4rem;
+	box-shadow: inset 0.1rem 0.1rem 0.4rem rgba(0, 0, 0, 0.6), inset -0.1rem -0.1rem 0.4rem rgba(255, 255, 255, 0.3);
 }
 
 /* Handle on hover */
@@ -42,24 +48,29 @@ html,body {
 	scroll-behavior: smooth;
 }
 
+
+
+
+
+
 .buttonSection {
 	z-index: 2;
 	position:fixed;
 	display: flex;
 
-  flex-direction: column;
+	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
 
 	width: 20vw;
-  height: 60vh;
+	height: 60vh;
 	top: 50%;
 
-  border-radius: 1rem;
-  background-color: rgba(50,50,50,1);
-  box-shadow: 0 0 1rem rgba(0, 0, 0, 1), inset 0 0 1rem rgba(255, 255, 255, 0.3);
+	border-radius: 1rem;
+	background-color: rgba(50,50,50,1);
+	box-shadow: 0 0 1rem rgba(0, 0, 0, 1), inset 0 0 1rem rgba(255, 255, 255, 0.3);
 
-  transition: 0.3s ease;
+	transition: 0.3s ease;
 }
 
 #buttonSectionLeft {
@@ -84,32 +95,32 @@ html,body {
 }
 
 button {
-  -webkit-tap-highlight-color:rgba(0,0,0,0);
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */
-  -khtml-user-select: none; /* Konqueror HTML */
-  -moz-user-select: none; /* Old versions of Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Safari */
+	-khtml-user-select: none; /* Konqueror HTML */
+	-moz-user-select: none; /* Old versions of Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 
-  color:white;
+	color:white;
 	cursor: pointer;
 	margin: 0 5vw;
 	padding: 3vmin;
-  width: 80%;
-  height: 20%;
+	width: 80%;
+	height: 20%;
 	outline:none;
 	border:none;
 
-  border-radius: 1rem;
+	border-radius: 1rem;
 	border-color: rgba(200,30,30, 1);
-  border-style: solid;
-  border-width: 5%;
+	border-style: solid;
+	border-width: 5%;
 
-  box-shadow: 0.1rem 0.1rem 0.6rem rgba(0, 0, 0, 0.7), -0.1rem -0.1rem 0.4rem rgba(255, 255, 255, 0.3);
+	box-shadow: 0.1rem 0.1rem 0.6rem rgba(0, 0, 0, 0.7), -0.1rem -0.1rem 0.4rem rgba(255, 255, 255, 0.3);
 
-  background-color: rgba(50,50,50,1);
-  transition: 0.3s ease;
+	background-color: rgba(50,50,50,1);
+	transition: 0.3s ease;
 }
 
 button:active {
@@ -123,6 +134,10 @@ button[disabled] {
 	opacity: 0.5;
 }
 
+button.selected {
+	border-color: rgba(0, 200, 30, 1);
+}
+
 #changeBackground {
 	height: 80%;
 }
@@ -131,17 +146,13 @@ button[disabled] {
 	border-color: rgba(0, 200, 30, 1);
 }
 
-#disableShadows {
-	border-color: rgba(0, 200, 30, 1);
-}
-
 .hideButtonSection {
-  position: fixed;
-  border-radius: 100%;
-  width: 5vh;
-  height: 5vh;
-  top: 50%;
-  margin: 0;
+	position: fixed;
+	border-radius: 100%;
+	width: 5vh;
+	height: 5vh;
+	top: 50%;
+	margin: 0;
 }
 
 .hidden .hideButtonSection {
@@ -149,13 +160,13 @@ button[disabled] {
 }
 
 #hideButtonSectionLeft {
-	  -webkit-transform: translate3d(10vw, -50%, 0);
-	  transform: translate3d(10vw, -50%, 0);
+	-webkit-transform: translate3d(10vw, -50%, 0);
+	transform: translate3d(10vw, -50%, 0);
 }
 
 #hideButtonSectionRight {
-  -webkit-transform: translate3d(-10vw, -50%, 0);
-  transform: translate3d(-10vw, -50%, 0);
+	-webkit-transform: translate3d(-10vw, -50%, 0);
+	transform: translate3d(-10vw, -50%, 0);
 }
 
 .hidden #hideButtonSectionLeft {
@@ -169,25 +180,25 @@ button[disabled] {
 }
 
 .tooltiptext {
-  pointer-events: none;
-  position: absolute;
-  z-index: 5;
+	pointer-events: none;
+	position: absolute;
+	z-index: 5;
 
-  width: auto;
+	width: auto;
 
-  color: white;
-  background-color: rgba(50,50,50,1);
-  text-align: center;
-  padding: 1rem;
+	color: white;
+	background-color: rgba(50,50,50,1);
+	text-align: center;
+	padding: 1rem;
 
-  border-radius: 1rem;
+	border-radius: 1rem;
 	border-color: rgba(40,40,255, 1);
-  border-style: solid;
-  border-width: 5%;
+	border-style: solid;
+	border-width: 5%;
 
-  opacity: 0;
-  transition: 0.4s;
-  transform: translateZ(0);
+	opacity: 0;
+	transition: 0.4s;
+	transform: translateZ(0);
 }
 
 button:hover .tooltiptext {
@@ -200,25 +211,32 @@ button:hover .tooltiptext {
 }
 
 
-@media only screen and (max-width: 1081px) {
-  .buttonSection {
-  	width: 27vw;
-  }
 
-	#buttonSectionRight {
-			height: 15vh; /* 12vh is the signle button's heiht + 3vh is the total padding */
-		  -webkit-transform: translate3d(calc(100vw - 27vw), -50%, 0);
-			transform: translate3d(calc(100vw - 27vw), -50%, 0);
+
+
+
+
+
+
+@media only screen and (max-width: 1081px) {
+	.buttonSection {
+		width: 27vw;
 	}
 
-  #hideButtonSectionLeft {
-    -webkit-transform: translate3d(calc(27vw / 2), -50%, 0);
-    transform: translate3d(calc(27vw / 2), -50%, 0);
-  }
+	#buttonSectionRight {
+		height: 15vh; /* button's height (12vh) + total padding (3vh) */
+		-webkit-transform: translate3d(calc(100vw - 27vw), -50%, 0);
+		transform: translate3d(calc(100vw - 27vw), -50%, 0);
+	}
+
+	#hideButtonSectionLeft {
+		-webkit-transform: translate3d(calc(27vw / 2), -50%, 0);
+		transform: translate3d(calc(27vw / 2), -50%, 0);
+	}
 
 	#hideButtonSectionRight {
-	  -webkit-transform: translate3d(calc(-27vw / 2), -50%, 0);
-	  transform: translate3d(calc(-27vw / 2), -50%, 0);
+		-webkit-transform: translate3d(calc(-27vw / 2), -50%, 0);
+		transform: translate3d(calc(-27vw / 2), -50%, 0);
 	}
 
 	.hidden #hideButtonSectionLeft {
