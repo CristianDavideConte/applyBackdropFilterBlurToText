@@ -51,7 +51,10 @@ html,body {
 
 
 
-
+#method1, 
+#method3 {
+	text-decoration: line-through; /* method 1 and method 3 have been broken by a chrome update */
+}
 
 .buttonSection {
 	z-index: 2;

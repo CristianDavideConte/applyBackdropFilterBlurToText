@@ -60,7 +60,7 @@ function init() {
     }
   }, {passive:true});
 
-  document.getElementById("method1").click(); //Method1 is the default one
+  document.getElementById("method2").click(); //Method2 is the default one
 }
 
 
