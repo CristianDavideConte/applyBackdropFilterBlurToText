@@ -8,14 +8,14 @@
 
 <p align="center"> As far as I know there's <strong>no way to directly apply the backdrop-filter:blur to a text</strong> element.</p><br/> 
 
-## First solution: The Slowest One
-1. Create a container
-2. Apply a background to it (or to its ::before pseudo-element)
-3. Use the filter:blur so that the container's background is blurred
-4. Apply a svg mask onto the svg element and then apply the same background to the container (or to its ::before pseudo-element)
+## <strike>First solution: The Slowest One</strike> (Broken by Chrome update)
+1. <strike>Create a container</strike>
+2. <strike>Apply a background to it (or to its ::before pseudo-element)</strike>
+3. <strike>Use the filter:blur so that the container's background is blurred</strike>
+4. <strike>Apply a svg mask onto the svg element and then apply the same background to the container (or to its ::before pseudo-element)</strike>
 
-This way we have the blurried background on top that gets masked and the non-blurry version under it.<br/><br/>
-**NOTE:** applying the background to the container's ::before pseudo element will allow you to modify the background  without touching the svg mask (usefull if you need to flip the background to create more contrast but you can't modify the original image).<br/><br/>
+<strike>This way we have the blurried background on top that gets masked and the non-blurry version under it.<br/><br/>
+**NOTE:** applying the background to the container's ::before pseudo element will allow you to modify the background  without touching the svg mask (usefull if you need to flip the background to create more contrast but you can't modify the original image).</strike><br/><br/>
 
 ## Second solution: The Fastest One
 1. Create a container
@@ -28,13 +28,13 @@ This way we have the effect we would have if the backdrop-filter: blur could be 
 **This one is the one which performs the best** because it's the only method that doesn't require the svg element to duplicate the background (which would have to be repainted at every frame because of the background-attachment:fixed attribute).<br/><br/>
 You can test the performances by using the `testSmoothness()` method in the browser console in combination with the browser profiler.<br/><br/>
 
-## Third solution: The Most Compatible One
-#### (requires to have 2 copies of the background, one of which already blurred)
-1. Create a container
-2. Apply a background to it
-3. Create a svg element which will represent out "text"
-4. Apply the blurry version of the background to the svg element
-5. Apply the svg-mask to the svg element
+## <strike>Third solution: The Most Compatible One</strike> (Broken by Chrome update)
+#### <strike>(requires to have 2 copies of the background, one of which already blurred)</strike>
+1. <strike>Create a container</strike>
+2. <strike>Apply a background to it</strike>
+3. <strike>Create a svg element which will represent out "text"</strike>
+4. <strike>Apply the blurry version of the background to the svg element</strike>
+5. <strike>Apply the svg-mask to the svg element</strike>
 
 ## Great! But the contrast is low...
 ### Let's add a shadow then!
